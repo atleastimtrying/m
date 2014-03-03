@@ -62,10 +62,7 @@ window.µ =
     sets the item passed into it to display block
 
   groupSelect: (arr)->
-    object = {}
-    @every arr, (item)=>
-      object[item] = @select item
-    object
+    returns a collection of objects when passed an array of labels
 
   find: (object, item)->
     returns an item from an object
