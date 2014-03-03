@@ -1,5 +1,72 @@
 µ
 =
 
-µ is some kind of weird version jQuery made for a laugh.
+µ is some kind of weird version jQuery made for a laugh. 
+It's available methods are shown below. m is based around the idea of an internal array of objects and modifying them.
+
+window.µ =
+  addData: (label, object)->
+    add an object to the inner object of m
+
+  addElements: (label, arr)->
+    add a collection by a label
+
+  getData: (label)->
+    @objects[label]
+    get an object by its label
+
+  getOne:(label)->
+    get a thing from m by label
+
+  addFn: (label, fn)->
+    add a new function to m
+
+  getFn: (label)->
+    @functions[label]
+
+  bind: (object, evnt, fn)->
+    adds a fn to an object based on event.
+
+  load: (fn)->
+    @bind window, 'load', fn
+
+  click: (selector)->
+    @bind @select(selector), 'click', @functions[selector]
+
+  visible: (label)->
+    object = @getOne label
+    object.style.display isnt 'none'
+
+  select: (selector)->
+    document.getElementsByClassName(selector)[0]
+
+  each: (object, fn)->
+    iterates over an object and calls the function
+
+  every: (arr, fn)->
+    a bit like each but for an array
+  
+  fnAll: (label, fn)->
+    calls the function on all items in data with the label
+
+  hideAll: (label)->
+    sets all the items that have the assigned label to display none
+
+  hide: (item)->
+    sets the item passed into it to display none
+
+  showAll: (label)->
+    sets all the items that have the assigned label to display block
+
+  show: (item)->
+    sets the item passed into it to display block
+
+  groupSelect: (arr)->
+    object = {}
+    @every arr, (item)=>
+      object[item] = @select item
+    object
+
+  find: (object, item)->
+    returns an item from an object
 
